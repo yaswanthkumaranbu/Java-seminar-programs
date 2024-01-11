@@ -106,7 +106,7 @@ public class Main {
                 System.out.println(m);
                 break;
             }
-            case 7: {      // Rotate the matrix
+            case 7: { // Rotate the matrix
                 int[][] arr = { { 1, 2 }, { 3, 4 } };
                 for (int x[] : arr) {
                     for (int y : x) {
@@ -139,6 +139,41 @@ public class Main {
                         System.out.print(y + " ");
                     }
                     System.out.println();
+                }
+                break;
+            }
+            case 8: {
+                int[] digits = { 9, 9, 8 };
+                for (int i = digits.length - 1; i >= 0; i--) {
+                    if (digits[i] < 9) {
+                        digits[i]++;
+                        for (int j : digits) {
+                            System.out.print(j + " ");
+                        }
+                        System.exit(0);
+                        break;
+
+                    }
+                    digits[i] = 0;
+                }
+                digits = new int[digits.length + 1];
+                digits[0] = 1;
+                for (int i : digits) {
+                    System.out.print(i + " ");
+                }
+                break;
+            }
+            case 9: {
+                int[][] arr = { { 1, 2, 3 }, { 4, 5, 6 }, { 7, 8, 9 } };
+                int[] lower = new int[arr[0].length];
+                int[] higher = new int[arr[0].length];
+                for (int i = 0; i < arr.length; i++) {
+                    int low = arr[i][0];
+                    for (int j = 0; j < arr[0].length; j++) {
+                        if (arr[i][j] < low)
+                            low = arr[i][j];
+                    }
+
                 }
                 break;
             }
