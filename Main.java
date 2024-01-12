@@ -164,7 +164,7 @@ public class Main {
                 break;
             }
             case 9: {
-                int[][] arr = { { 1, 2, 3 }, { 4, 5, 6 }, { 7, 8, 9 } };
+                int[][] arr = { {4,16,12}, {2,18,14}, {1,3,6} };
                 int[] lower = new int[arr[0].length];
                 int[] higher = new int[arr[0].length];
                 for (int i = 0; i < arr.length; i++) {
@@ -173,7 +173,25 @@ public class Main {
                         if (arr[i][j] < low)
                             low = arr[i][j];
                     }
-
+                    lower[i]=low;
+                }
+                for (int i = 0; i < arr.length; i++) {
+                    int high = arr[0][i];
+                    for (int j = 0; j < arr[0].length; j++) {
+                        if (arr[j][i] > high)
+                            high = arr[j][i];
+                            // System.out.println(high);
+                    }
+                    higher[i]=high;
+                }
+                System.out.print("saddle point is:");
+                for(int k:lower){
+                    for(int l:higher){
+                        if(k==l){
+                            System.out.println(k);
+                            break;
+                        }
+                    }
                 }
                 break;
             }
