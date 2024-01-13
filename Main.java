@@ -195,6 +195,20 @@ public class Main {
                 }
                 break;
             }
+            case 10:{     //Integer to roman
+                int num=111;
+                String[] th={"", "M", "MM", "MMM"};
+                String[] hu={"", "C", "CC", "CCC", "CD", "D", "DC", "DCC", "DCCC", "CM"};
+                String[] te={"", "X", "XX", "XXX", "XL", "L", "LX", "LXX", "LXXX", "XC"};
+                String[] on={"", "I", "II", "III", "IV", "V", "VI", "VII", "VIII", "IX"};
+                String s="";
+                s+=th[num/1000];
+                s+=hu[(num%1000)/100];
+                s+=te[(num%100)/10];
+                s+=on[num%10];
+                System.out.println(s);
+                break;
         }
+    }
     }
 }
