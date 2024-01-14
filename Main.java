@@ -209,6 +209,38 @@ public class Main {
                 System.out.println(s);
                 break;
         }
+        case 11:{  // Spiral matrix
+            int[][] arr={{1,2,3},{4,5,6},{7,8,9}};
+            List<Integer> ans = new ArrayList<>();
+            int row=arr.length;
+            int col=arr[0].length;
+            int r=0;
+            int c=0;
+            while(r<row && c<col){
+                for(int i=c;i<col;i++){
+                    ans.add(arr[r][i]);
+                }
+                r++;
+                for(int j=r;j<row;j++){
+                    ans.add(arr[j][row-1]);
+                }
+                col--;
+                if(r<row){
+                    for(int i=col-1;i>=0;--i){
+                        ans.add(arr[row-1][i]);
+                    }
+                row--;
+                }
+                if(c<col){
+                    for(int j=row-1;j>=r;j--){
+                        ans.add(arr[j][c]);
+                    }
+                    c++;
+                }
+            }
+            System.out.println(ans);
+            break;
+        }
     }
     }
 }
