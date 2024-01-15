@@ -1,5 +1,14 @@
 import java.util.*;
 
+class Node {
+    int data;
+    Node next;
+
+    Node(int val) {
+        data = val;
+    }
+}
+
 public class Main {
     static int operation(int n) {
         int rem = 0, sum = 0;
@@ -10,6 +19,61 @@ public class Main {
         }
         return sum;
 
+    }
+
+    static Node head = null;
+
+    // Insertion
+
+    void insert(int d) {
+        Node n = new Node(d);
+        // n.data=d;
+        n.next = null;
+
+        if (head == null)
+            head = n;
+
+        else {
+            Node temp = head;
+            while (temp.next != null) {
+                temp = temp.next;
+            }
+            temp.next = n;
+        }
+    }
+
+    boolean palindrome() {
+        Node temp = head;
+        int count = 0;
+        while (temp.next != null) {
+            count++;
+            temp = temp.next;
+        }
+        Node forward = head;
+        for (int i = 0; i <= count / 2; i++) {
+            Node backward = head;
+            for (int j = 0; j < count - i; j++) {
+                backward = backward.next;
+            }
+            // System.out.println(forward.data+" "+backward.data);
+            if (backward.data != forward.data) {
+                return false;
+            }
+            forward = forward.next;
+        }
+        return true;
+    }
+
+    void display() {
+        Node temp = head;
+        if (temp != null) {
+            while (temp != null) {
+                System.out.print(temp.data + " ");
+                temp = temp.next;
+            }
+        } else {
+            System.out.println("List is empty!");
+        }
     }
 
     public static void main(String[] args) {
@@ -164,7 +228,7 @@ public class Main {
                 break;
             }
             case 9: {
-                int[][] arr = { {4,16,12}, {2,18,14}, {1,3,6} };
+                int[][] arr = { { 4, 16, 12 }, { 2, 18, 14 }, { 1, 3, 6 } };
                 int[] lower = new int[arr[0].length];
                 int[] higher = new int[arr[0].length];
                 for (int i = 0; i < arr.length; i++) {
@@ -173,21 +237,21 @@ public class Main {
                         if (arr[i][j] < low)
                             low = arr[i][j];
                     }
-                    lower[i]=low;
+                    lower[i] = low;
                 }
                 for (int i = 0; i < arr.length; i++) {
                     int high = arr[0][i];
                     for (int j = 0; j < arr[0].length; j++) {
                         if (arr[j][i] > high)
                             high = arr[j][i];
-                            // System.out.println(high);
+                        // System.out.println(high);
                     }
-                    higher[i]=high;
+                    higher[i] = high;
                 }
                 System.out.print("saddle point is:");
-                for(int k:lower){
-                    for(int l:higher){
-                        if(k==l){
+                for (int k : lower) {
+                    for (int l : higher) {
+                        if (k == l) {
                             System.out.println(k);
                             break;
                         }
@@ -195,52 +259,70 @@ public class Main {
                 }
                 break;
             }
-            case 10:{     //Integer to roman
-                int num=111;
-                String[] th={"", "M", "MM", "MMM"};
-                String[] hu={"", "C", "CC", "CCC", "CD", "D", "DC", "DCC", "DCCC", "CM"};
-                String[] te={"", "X", "XX", "XXX", "XL", "L", "LX", "LXX", "LXXX", "XC"};
-                String[] on={"", "I", "II", "III", "IV", "V", "VI", "VII", "VIII", "IX"};
-                String s="";
-                s+=th[num/1000];
-                s+=hu[(num%1000)/100];
-                s+=te[(num%100)/10];
-                s+=on[num%10];
+            case 10: { // Integer to roman
+                int num = 111;
+                String[] th = { "", "M", "MM", "MMM" };
+                String[] hu = { "", "C", "CC", "CCC", "CD", "D", "DC", "DCC", "DCCC", "CM" };
+                String[] te = { "", "X", "XX", "XXX", "XL", "L", "LX", "LXX", "LXXX", "XC" };
+                String[] on = { "", "I", "II", "III", "IV", "V", "VI", "VII", "VIII", "IX" };
+                String s = "";
+                s += th[num / 1000];
+                s += hu[(num % 1000) / 100];
+                s += te[(num % 100) / 10];
+                s += on[num % 10];
                 System.out.println(s);
                 break;
-        }
-        case 11:{  // Spiral matrix
-            int[][] arr={{1,2,3},{4,5,6},{7,8,9}};
-            List<Integer> ans = new ArrayList<>();
-            int row=arr.length;
-            int col=arr[0].length;
-            int r=0;
-            int c=0;
-            while(r<row && c<col){
-                for(int i=c;i<col;i++){
-                    ans.add(arr[r][i]);
-                }
-                r++;
-                for(int j=r;j<row;j++){
-                    ans.add(arr[j][row-1]);
-                }
-                col--;
-                if(r<row){
-                    for(int i=col-1;i>=0;--i){
-                        ans.add(arr[row-1][i]);
-                    }
-                row--;
-                }
-                if(c<col){
-                    for(int j=row-1;j>=r;j--){
-                        ans.add(arr[j][c]);
-                    }
-                    c++;
-                }
             }
-            System.out.println(ans);
-            break;
+            case 11: { // Spiral matrix
+                int[][] arr = { { 1, 2, 3 }, { 4, 5, 6 }, { 7, 8, 9 } };
+                List<Integer> ans = new ArrayList<>();
+                int row = arr.length;
+                int col = arr[0].length;
+                int r = 0;
+                int c = 0;
+                while (r < row && c < col) {
+                    for (int i = c; i < col; i++) {
+                        ans.add(arr[r][i]);
+                    }
+                    r++;
+                    for (int j = r; j < row; j++) {
+                        ans.add(arr[j][row - 1]);
+                    }
+                    col--;
+                    if (r < row) {
+                        for (int i = col - 1; i >= 0; --i) {
+                            ans.add(arr[row - 1][i]);
+                        }
+                        row--;
+                    }
+                    if (c < col) {
+                        for (int j = row - 1; j >= r; j--) {
+                            ans.add(arr[j][c]);
+                        }
+                        c++;
+                    }
+                }
+                System.out.println(ans);
+                break;
+            }
+            case 12: {
+                Main m = new Main();
+                m.insert(10);
+                m.display();
+                System.out.println();
+                m.insert(20);
+                m.display();
+                System.out.println();
+                m.insert(30);
+                m.display();
+                System.out.println();
+                m.insert(10);
+                m.display();
+                System.out.println();
+                System.out.println("Palindrome : " + m.palindrome());
+
+                break;
+            }
         }
-    }
     }
 }
