@@ -206,7 +206,7 @@ public class Main {
                 }
                 break;
             }
-            case 8: {
+            case 8: {      // Add digits
                 int[] digits = { 9, 9, 8 };
                 for (int i = digits.length - 1; i >= 0; i--) {
                     if (digits[i] < 9) {
@@ -227,7 +227,7 @@ public class Main {
                 }
                 break;
             }
-            case 9: {
+            case 9: {   //Saddle point
                 int[][] arr = { { 4, 16, 12 }, { 2, 18, 14 }, { 1, 3, 6 } };
                 int[] lower = new int[arr[0].length];
                 int[] higher = new int[arr[0].length];
@@ -305,7 +305,7 @@ public class Main {
                 System.out.println(ans);
                 break;
             }
-            case 12: {
+            case 12: {     //List is a palindrome or not
                 Main m = new Main();
                 m.insert(10);
                 m.display();
@@ -321,6 +321,21 @@ public class Main {
                 System.out.println();
                 System.out.println("Palindrome : " + m.palindrome());
 
+                break;
+            }
+            case 13:{ // Pascal's triangle
+            int row=5;
+            for(int i=0;i<row;i++){
+                for(int space=0;space<row-1-i;space++){
+                    System.out.print(" ");
+                }
+                int num=1;
+                for(int val=0;val<=i;val++){
+                    System.out.print(num+" ");
+                    num=num*(i-val)/(val+1);
+                }
+                System.out.println();
+            }
                 break;
             }
         }
